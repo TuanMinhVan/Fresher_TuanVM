@@ -1,0 +1,88 @@
+.image-table {
+  width: 130px;
+  height: 50px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+.table tbody tr:hover {
+  background-color: #f5f5f5;
+}
+.table tbody tr td {
+  vertical-align: middle;
+  text-align: left;
+}
+.table thead tr th:nth-child(4) {
+  width: 100px;
+}
+
+.loading-more {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.loading-more:after {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #f3f3f3;
+  border-radius: 50%;
+  border-top-color: #3498db;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.search-product {
+  display: flex;
+  justify-content: end;
+  .search-input {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    input {
+      padding: 5px 10px 5px 30px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+      outline: none;
+      width: 100%;
+    }
+    button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 5px;
+      .fa-times {
+        fill: #999;
+        width: 16px;
+        height: 16px;
+      }
+      i {
+        font-size: 14px;
+        color: #999;
+      }
+    }
+
+    button[type="submit"] {
+      left: 5px;
+    }
+    button[type="button"] {
+      right: 5px;
+    }
+  }
+}
