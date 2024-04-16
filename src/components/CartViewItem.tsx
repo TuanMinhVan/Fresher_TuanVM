@@ -1,9 +1,6 @@
-import { Card } from 'react-bootstrap';
+import { Card } from "react-bootstrap";
 
-import {
-  CartItem,
-  useCarts,
-} from '../contexts/CartContext';
+import { CartItem, useCarts } from "../contexts/CartContext";
 
 /**
  * The CartItem component in TypeScript React displays information about a product in a shopping cart
@@ -31,21 +28,28 @@ const CartViewItem: React.FC<{
                   alt={item.product.title}
                   className="img-fluid rounded-3"
                   style={{
-                    width: "65px",
-                    height: "65px",
+                    width: "80px",
+                    height: "80px",
                     objectFit: "cover",
                   }}
                 />
               </div>
               <div className="ms-3">
-                <h5>Iphone 11 pro</h5>
-                <p className="small mb-0">256GB, Navy Blue</p>
+                <h6>{item.product.title}</h6>
               </div>
             </div>
             <div className="d-flex flex-row align-items-center">
+              <div style={{ width: "100px" }}>
+                <h6 className="mb-0">
+                  {item.product.price.toLocaleString("en-US", {
+                    style: "currency",
+                    currency: "USD",
+                  })}
+                </h6>
+              </div>
               <QuantityButton item={item}></QuantityButton>
               <div style={{ width: "100px" }}>
-                <h5 className="mb-0">
+                <h5 className="mb-0 text-orange">
                   {(item.product.price * item.quantity).toLocaleString(
                     "en-US",
                     {
@@ -75,10 +79,14 @@ export default CartViewItem;
 const QuantityButton: React.FC<{ item: CartItem }> = ({ item }) => {
   const { handleIncrement, handleDecrement } = useCarts();
   return (
-    <div className="quantity-button">
-      <button onClick={() => handleDecrement(item)}>-</button>
+    <div className="quantity-button ">
+      <button onClick={() => handleDecrement(item)} className="decrement">
+        -
+      </button>
       <span>{item.quantity}</span>
-      <button onClick={() => handleIncrement(item)}>+</button>
+      <button onClick={() => handleIncrement(item)} className="increment">
+        +
+      </button>
     </div>
   );
 };

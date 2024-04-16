@@ -65,23 +65,32 @@
 .quantity-button {
   display: inline-flex;
   align-items: center;
-  background: #dddd;
-  border-radius: 100px;
   margin: 0 10px;
   button,
   button:hover {
     cursor: pointer;
-    background-color: #212ec9;
-    width: 25px;
-    height: 25px;
+    width: 32px;
+    height: 32px;
     padding: 0;
-    border: none;
-    color: #fff;
-    border-radius: 100px;
     text-align: center;
+    background: transparent;
   }
   span {
-    margin: 0 10px;
+    border: 1px solid rgba(0, 0, 0, 0.09);
+    width: 50px;
+    height: 32px;
+    border-left: 0;
+    border-right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+  }
+  .decrement {
+    border: 1px solid rgba(0, 0, 0, 0.09);
+  }
+  .increment {
+    border: 1px solid rgba(0, 0, 0, 0.09);
   }
 }
 .cart {
