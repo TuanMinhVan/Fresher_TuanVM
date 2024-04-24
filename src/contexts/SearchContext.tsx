@@ -1,9 +1,9 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState } from 'react';
 
-import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux';
 
-import { AppDispatch } from "../redux/store";
-import { fetchProducts, searchProducts } from "../redux/thunks/productThunks";
+import { AppDispatch } from '../redux/store';
+import { fetchProducts, searchProducts } from '../redux/thunks/productThunks';
 
 interface SearchContextProps {
   searchTerm: string;
@@ -11,7 +11,7 @@ interface SearchContextProps {
 }
 
 const SearchContext = createContext<SearchContextProps>({
-  searchTerm: "",
+  searchTerm: '',
   handleSearchChange: () => {},
 });
 
@@ -29,7 +29,7 @@ export default SearchContext;
 
 export const SearchProvider: React.FC<any> = ({ children }) => {
   const dispatch: AppDispatch = useDispatch();
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearchChange = (newSearchTerm: string) => {
     setSearchTerm(newSearchTerm);

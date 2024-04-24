@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 
 import { CartContext } from '../contexts/CartContext';
 
@@ -9,7 +9,7 @@ import { CartContext } from '../contexts/CartContext';
  * containing an icon element with the class "fas fa-shopping-cart" and a span element displaying the
  * length of the `cartItems` array from the `CartContext`.
  */
-const CartButton = () => {
+const CartButton: React.FC = () => {
   const { cartItems } = useContext(CartContext);
 
   const total = cartItems.reduce((acc, item) => acc + item.quantity, 0);

@@ -1,17 +1,18 @@
-import "./style.scss";
+import './style.scss';
 
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 
-import ReactPullToRefresh from "react-pull-to-refresh";
-import { useDispatch, useSelector } from "react-redux";
+import ReactPullToRefresh from 'react-pull-to-refresh';
+import { useDispatch, useSelector } from 'react-redux';
 
-import LoadMoreHandler from "../../components/LoadMoreHandler";
-import { AppDispatch, RootState } from "../../redux/store";
+import CategoryList from '../../components/CategoryList';
+import LoadMoreHandler from '../../components/LoadMoreHandler';
+import { AppDispatch, RootState } from '../../redux/store';
 import {
   fetchMoreProducts,
   fetchProducts,
-} from "../../redux/thunks/productThunks";
-import ProductGrid from "./components/ProductGrid";
+} from '../../redux/thunks/productThunks';
+import ProductGrid from './components/ProductGrid';
 
 /**
  * The `ProductList` component in TypeScript React fetches and displays a list of products, with
@@ -22,6 +23,8 @@ import ProductGrid from "./components/ProductGrid";
  */
 
 const ProductList: React.FC = () => {
+  const search = useSelector((state: RootState) => state.productsState.search);
+
   const error = useSelector((state: RootState) => state.productsState.error);
 
   const products = useSelector(
@@ -46,23 +49,24 @@ const ProductList: React.FC = () => {
     dispatch(fetchMoreProducts());
   };
 
-  // const handleSearch = (searchTerm: string) => {
-  //   if (searchTerm.length > 0) {
-  //     dispatch(searchProducts(searchTerm));
-  //   } else {
-  //     dispatch(fetchProducts());
-  //   }
-  // };
-
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
+  if (search.length !== 0 && products.length === 0 && !loading) {
+    return (
+      <div className="no-results">
+        <p>No results found for "{search}"</p>
+      </div>
+    );
+  }
+
   return (
     <>
+      <CategoryList />
       <div className="product-list-page container">
-        {/* <SearchBar onSearch={handleSearch} /> */}
         {loading && products.length === 0 && <p>Loading...</p>}
+
         {error && <p>Error: {error}</p>}
         <ReactPullToRefresh onRefresh={handleRefresh} loading={loading}>
           <ProductGrid products={products} />
@@ -71,8 +75,7 @@ const ProductList: React.FC = () => {
       <LoadMoreHandler
         onLoadMore={onLoadMore}
         hasMore={hasMore}
-        loadingMore={loading}
-      ></LoadMoreHandler>
+        loadingMore={loading}></LoadMoreHandler>
     </>
   );
 };

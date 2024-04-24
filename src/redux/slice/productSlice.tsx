@@ -9,6 +9,7 @@ export interface ProductState {
   hasMore: boolean;
   page: number;
   total: number;
+  search: string;
 }
 
 const initialState: ProductState = {
@@ -18,15 +19,20 @@ const initialState: ProductState = {
   hasMore: true,
   page: 1,
   total: 0,
+  search: '',
 };
 
 const productSlice = createSlice({
-  name: "products", /// unique name for the slice
+  name: 'products', /// unique name for the slice
   initialState,
   reducers: {
     fetchProductsRequest: (state) => {
       state.loading = true;
       state.error = null;
+      state.search = '';
+    },
+    searchProducts: (state, action) => {
+      state.search = action.payload;
     },
     fetchProductsSuccess: (state, action) => {
       state.loading = false;
@@ -95,6 +101,7 @@ export const {
   fetchMoreProductsRequest,
   fetchMoreProductsSuccess,
   fetchMoreProductsFailure,
+  searchProducts,
 } = productSlice.actions;
 
 export default productSlice.reducer;

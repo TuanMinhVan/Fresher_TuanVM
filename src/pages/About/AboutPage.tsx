@@ -2,11 +2,7 @@ import './style.scss';
 
 import React from 'react';
 
-import {
-  Button,
-  Col,
-  Row,
-} from 'react-bootstrap';
+import { Button, Col, Row } from 'react-bootstrap';
 
 /* The About class is a React component that renders an About page with a heading and a welcoming
 message. */

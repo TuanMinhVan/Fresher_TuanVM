@@ -9,7 +9,7 @@ interface SearchBarProps {
 breakdown of what the code is doing: */
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
@@ -22,8 +22,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   };
 
   const handleClearSearch = () => {
-    setSearchTerm("");
-    if (onSearch) onSearch("");
+    setSearchTerm('');
+    if (onSearch) onSearch('');
   };
 
   return (

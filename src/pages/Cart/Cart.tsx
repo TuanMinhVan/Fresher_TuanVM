@@ -1,9 +1,9 @@
-import "./style.scss";
+import './style.scss';
 
-import { Container } from "react-bootstrap";
+import { Container } from 'react-bootstrap';
 
-import CartViewItem from "../../components/CartViewItem";
-import { useCarts } from "../../contexts/CartContext";
+import CartViewItem from '../../components/CartViewItem';
+import { useCarts } from '../../contexts/CartContext';
 
 /**
  * The Cart component renders a list of items from the cart with the ability to remove items.

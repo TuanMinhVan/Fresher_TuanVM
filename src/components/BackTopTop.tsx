@@ -1,16 +1,13 @@
-import React, {
-  useEffect,
-  useState,
-} from 'react';
+import { useEffect, useState } from 'react';
 
 /**
  * The BackToTopButton component in TypeScript React displays a button that scrolls the window to the
  * top when clicked after scrolling down 100px.
  */
-const BackToTopButton = () => {
+const BackToTopButton: React.FC = () => {
   const [showButton, setShowButton] = useState(false);
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
   useEffect(() => {
     const handleScroll = () => {
@@ -21,16 +18,15 @@ const BackToTopButton = () => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <button
-      className={`back-to-top ${showButton ? "visible" : "hidden"}`}
-      onClick={scrollToTop}
-    >
+      className={`back-to-top ${showButton ? 'visible' : 'hidden'}`}
+      onClick={scrollToTop}>
       <i className="fas fa-arrow-up"></i>
     </button>
   );

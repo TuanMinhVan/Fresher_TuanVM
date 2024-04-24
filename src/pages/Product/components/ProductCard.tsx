@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
-import AddCartButton from "../../../components/AddCartButton";
-import { Product } from "../../../models/product";
-import ProductDetail from "../ProductDetail";
+import AddCartButton from '../../../components/AddCartButton';
+import { Product } from '../../../models/product';
 
 interface ProductCardProps {
   product: Product;
@@ -19,35 +18,28 @@ interface ProductCardProps {
  */
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const { title, price, images, description } = product;
-
-  const [selectedItem, setSelectedItem] = useState<Product | null>(null);
-  const closeDialog = () => {
-    setSelectedItem(null);
-  };
-
-  const openDetail = (event: any) => {
+  const navigate = useNavigate();
+  const { title, price, images, description, id } = product;
+  const goToProduct = (event: any) => {
     event.preventDefault();
-    setSelectedItem(product);
+    navigate(`/products/${id}`);
   };
-
   return (
     <>
-      <div className="product-card text-center" onClick={openDetail}>
+      <div className="product-card text-center" onClick={goToProduct}>
         <div className="product-image">
           <img src={images[0]} alt={title} />
         </div>
         <h3 className="product-name">{title}</h3>
         <div className="product-price">
-          {price.toLocaleString("en-US", {
-            style: "currency",
-            currency: "USD",
+          {price.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
           })}
         </div>
         <p className="product-description">{description}</p>
         <AddCartButton product={product} />
       </div>
-      <ProductDetail product={selectedItem} close={closeDialog}></ProductDetail>
     </>
   );
 };

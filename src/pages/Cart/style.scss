@@ -62,37 +62,7 @@
     font-size: 50px;
   }
 }
-.quantity-button {
-  display: inline-flex;
-  align-items: center;
-  margin: 0 10px;
-  button,
-  button:hover {
-    cursor: pointer;
-    width: 32px;
-    height: 32px;
-    padding: 0;
-    text-align: center;
-    background: transparent;
-  }
-  span {
-    border: 1px solid rgba(0, 0, 0, 0.09);
-    width: 50px;
-    height: 32px;
-    border-left: 0;
-    border-right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: transparent;
-  }
-  .decrement {
-    border: 1px solid rgba(0, 0, 0, 0.09);
-  }
-  .increment {
-    border: 1px solid rgba(0, 0, 0, 0.09);
-  }
-}
+
 .cart {
   box-shadow: 0 2px 15px -3px rgba(0, 0, 0, 0.07),
     0 10px 20px -2px rgba(0, 0, 0, 0.04);

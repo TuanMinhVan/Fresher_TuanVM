@@ -94,7 +94,7 @@
 }
 
 .ptr-refresh .ptr-element .genericon::after {
-  content: "";
+  content: '';
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -238,4 +238,68 @@ body:not(.ptr-loading) .ptr-element {
 }
 .text-orange {
   color: #f53d2d;
+}
+
+.quantity-button {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 10px;
+  button,
+  button:hover {
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    text-align: center;
+    background: transparent;
+  }
+  span {
+    border: 1px solid rgba(0, 0, 0, 0.09);
+    width: 50px;
+    height: 32px;
+    border-left: 0;
+    border-right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+  }
+  .decrement {
+    border: 1px solid rgba(0, 0, 0, 0.09);
+  }
+  .increment {
+    border: 1px solid rgba(0, 0, 0, 0.09);
+  }
+}
+.category-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  transition: transform 0.1s cubic-bezier(0.4, 0, 0.6, 1),
+    box-shadow 0.1s cubic-bezier(0.4, 0, 0.6, 1);
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  .category-item {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.87);
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    text-align: center;
+    background-color: #fff;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+  }
+  .category-item:hover {
+    transform: translateZ(0);
+    z-index: 1;
+    border-color: rgba(0, 0, 0, 0.12);
+    border-width: 1px;
+    box-shadow: 0 0 0.8125rem 0 rgba(0, 0, 0, 0.05);
+    background-color: #f3f3f3;
+  }
+}
+.navbar-brand:hover {
+  color: white;
 }

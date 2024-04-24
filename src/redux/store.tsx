@@ -1,9 +1,6 @@
 import { thunk } from 'redux-thunk';
 
-import {
-  configureStore,
-  Tuple,
-} from '@reduxjs/toolkit';
+import { configureStore, Tuple } from '@reduxjs/toolkit';
 
 import productReducer from './slice/productSlice';
 

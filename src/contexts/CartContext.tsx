@@ -1,9 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 import { Product } from '../models/product';
 
@@ -74,14 +69,14 @@ export const CartProvider: React.FC<any> = ({ children }) => {
   };
 
   useEffect(() => {
-    const cartItems = sessionStorage.getItem("cartItems");
+    const cartItems = sessionStorage.getItem('cartItems');
     if (cartItems) {
       setCartItems(JSON.parse(cartItems));
     }
   }, []);
 
   useEffect(() => {
-    sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
+    sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
   }, [cartItems]);
 
   return (
@@ -92,8 +87,7 @@ export const CartProvider: React.FC<any> = ({ children }) => {
         removeFromCart,
         handleIncrement,
         handleDecrement,
-      }}
-    >
+      }}>
       {children}
     </CartContext.Provider>
   );
@@ -101,7 +95,7 @@ export const CartProvider: React.FC<any> = ({ children }) => {
 export const useCarts = () => {
   const context = useContext(CartContext);
   if (!context) {
-    throw new Error("useCarts must be used within CartProvider");
+    throw new Error('useCarts must be used within CartProvider');
   }
   return context;
 };

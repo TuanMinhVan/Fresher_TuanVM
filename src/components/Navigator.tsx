@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState } from 'react';
 
 import {
   Button,
@@ -8,7 +8,7 @@ import {
   InputGroup,
   Nav,
   Navbar,
-} from "react-bootstrap";
+} from 'react-bootstrap';
 
 import {
   faBell,
@@ -16,16 +16,17 @@ import {
   faComment,
   faSearch,
   faShoppingCart,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import SearchContext from "../contexts/SearchContext";
+import SearchContext from '../contexts/SearchContext';
 
-/* The Navigator class renders a navigation bar with links to different sections and a cart button. */
+/* The code you provided defines a functional component called `Navigator` in TypeScript with React.
+Here's a breakdown of what the component does: */
 
 const Navigator: React.FC = () => {
   const { handleSearchChange } = useContext(SearchContext);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -35,8 +36,8 @@ const Navigator: React.FC = () => {
 
   const clearSearch = (event: any) => {
     event.preventDefault();
-    setSearchTerm("");
-    handleSearchChange("");
+    setSearchTerm('');
+    handleSearchChange('');
   };
 
   return (
@@ -46,7 +47,7 @@ const Navigator: React.FC = () => {
           Shopping Mall
         </Navbar.Brand>
         <InputGroup className="search-bar">
-          <Form onSubmit={handleSubmit} style={{ width: "calc(100% - 42px)" }}>
+          <Form onSubmit={handleSubmit} style={{ width: 'calc(100% - 42px)' }}>
             <FormControl
               placeholder="Tìm kiếm sản phẩm..."
               value={searchTerm}

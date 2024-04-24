@@ -1,3 +1,5 @@
+import '../style.scss';
+
 import { Product } from '../../../models/product';
 import ProductCard from './ProductCard';
 

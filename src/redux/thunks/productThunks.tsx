@@ -5,7 +5,7 @@ import { ThunkAction } from 'redux-thunk';
 import * as actions from '../slice/productSlice';
 import { RootState } from '../store';
 
-const baseUrl = "https://dummyjson.com";
+const baseUrl = 'https://dummyjson.com';
 
 /**
  * The `fetchProducts` function is a Redux thunk action that fetches product data from an API endpoint
@@ -66,7 +66,7 @@ const fetchMoreProducts =
 const searchProducts =
   (search: string): ThunkAction<void, RootState, any, any> =>
   async (dispatch) => {
-    dispatch(actions.fetchProductsRequest());
+    dispatch(actions.searchProducts(search));
     try {
       const response = await axios.get(
         `${baseUrl}/products/search?q=${search}`
@@ -77,4 +77,4 @@ const searchProducts =
     }
   };
 
-export { fetchMoreProducts, fetchProducts, searchProducts };
+export { baseUrl, fetchMoreProducts, fetchProducts, searchProducts };
