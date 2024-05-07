@@ -1,86 +1,63 @@
-import { useContext, useState } from 'react';
-
-import {
-  Button,
-  Container,
-  Form,
-  FormControl,
-  InputGroup,
-  Nav,
-  Navbar,
-} from 'react-bootstrap';
-
-import {
-  faBell,
-  faClose,
-  faComment,
-  faSearch,
-  faShoppingCart,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-import SearchContext from '../contexts/SearchContext';
-
 /* The code you provided defines a functional component called `Navigator` in TypeScript with React.
 Here's a breakdown of what the component does: */
 
 const Navigator: React.FC = () => {
-  const { handleSearchChange } = useContext(SearchContext);
-  const [searchTerm, setSearchTerm] = useState('');
+  // const { handleSearchChange } = useContext(SearchContext);
+  // const [searchTerm, setSearchTerm] = useState('');
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
 
-    handleSearchChange(searchTerm);
-  };
+  //   handleSearchChange(searchTerm);
+  // };
 
-  const clearSearch = (event: any) => {
-    event.preventDefault();
-    setSearchTerm('');
-    handleSearchChange('');
-  };
+  // const clearSearch = (event: any) => {
+  //   event.preventDefault();
+  //   setSearchTerm('');
+  //   handleSearchChange('');
+  // };
 
   return (
-    <Navbar expand="lg" className="shopee-navbar">
-      <Container>
-        <Navbar.Brand href="/" className="logo">
-          Shopping Mall
-        </Navbar.Brand>
-        <InputGroup className="search-bar">
-          <Form onSubmit={handleSubmit} style={{ width: 'calc(100% - 42px)' }}>
-            <FormControl
-              placeholder="Tìm kiếm sản phẩm..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </Form>
-          {searchTerm.length > 0 ? (
-            <Button variant="danger" type="button" onClick={clearSearch}>
-              <FontAwesomeIcon icon={faClose} />
-            </Button>
-          ) : (
-            <Button variant="danger" type="submit">
-              <FontAwesomeIcon icon={faSearch} />
-            </Button>
-          )}
-        </InputGroup>
-        <Nav className="nav-links">
-          <Nav.Link href="#" className="nav-links-row">
-            <FontAwesomeIcon icon={faBell} /> Thông báo
-          </Nav.Link>
-          <Nav.Link href="#" className="nav-links-row">
-            <FontAwesomeIcon icon={faComment} /> Chat
-          </Nav.Link>
-          <Nav.Link href="/cart" className="nav-links-row">
-            <FontAwesomeIcon icon={faShoppingCart} />
-            Giỏ Hàng
-          </Nav.Link>
-          <Nav.Link href="#" className="nav-links-row">
-            Đăng nhập
-          </Nav.Link>
-        </Nav>
-      </Container>
-    </Navbar>
+    <header className="bg-gray-100 p-4 shadow-md">
+      <div className="container mx-auto flex items-center justify-between">
+        {/* Logo */}
+        <a href="/" className="text-2xl font-bold">
+          Shop của bạn
+        </a>
+
+        {/* Search Bar */}
+        <div className="flex items-center">
+          <input
+            type="text"
+            className="px-4 py-2 border border-gray-300 rounded-md"
+            placeholder="Tìm kiếm sản phẩm..."
+          />
+          <button className="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded-md">
+            <i className="fas fa-search"></i>
+          </button>
+        </div>
+
+        {/* Navigation */}
+        <nav>
+          <ul className="flex space-x-4">
+            <li>
+              <a href="/">Trang Chủ</a>
+            </li>
+            <li>
+              <a href="/products">Sản Phẩm</a>
+            </li>
+            <li>
+              <a href="/about">Về Chúng Tôi</a>
+            </li>
+          </ul>
+        </nav>
+
+        {/* Giỏ hàng  */}
+        <a href="/cart" className="text-blue-500 hover:text-blue-700">
+          <i className="fas fa-shopping-cart fa-lg"></i>
+        </a>
+      </div>
+    </header>
   );
 };
 

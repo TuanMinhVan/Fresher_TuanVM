@@ -1,5 +1,3 @@
-import { Card } from 'react-bootstrap';
-
 import { CartItem, useCarts } from '../contexts/CartContext';
 import QuantityButton from './QuantityButton';
 
@@ -22,62 +20,35 @@ const CartViewItem: React.FC<CartItemProps> = ({ item, removeFromCart }) => {
   const { handleIncrement, handleDecrement } = useCarts();
 
   return (
-    <Card className="mb-3">
-      <div className="d-flex justify-content-between">
-        <div className="card-body">
-          <div className="d-flex justify-content-between flex-md-row flex-column">
-            <div className="d-flex flex-row align-items-center">
-              <div>
-                <img
-                  src={item.product.images[0]}
-                  alt={item.product.title}
-                  className="img-fluid rounded-3"
-                  style={{
-                    width: '80px',
-                    height: '80px',
-                    objectFit: 'cover',
-                  }}
-                />
-              </div>
-              <div className="ms-3">
-                <h6>{item.product.title}</h6>
-              </div>
-            </div>
-            <div className="d-flex flex-row align-items-center">
-              <div style={{ width: '100px' }}>
-                <h6 className="mb-0">
-                  {item.product.price.toLocaleString('en-US', {
-                    style: 'currency',
-                    currency: 'USD',
-                  })}
-                </h6>
-              </div>
-              <QuantityButton
-                quantity={item.quantity}
-                handleIncrement={() => handleIncrement(item)}
-                handleDecrement={() => handleDecrement(item)}></QuantityButton>
-              <div style={{ width: '100px' }}>
-                <h5 className="mb-0 text-orange">
-                  {(item.product.price * item.quantity).toLocaleString(
-                    'en-US',
-                    {
-                      style: 'currency',
-                      currency: 'USD',
-                    }
-                  )}
-                </h5>
-              </div>
-              <button
-                style={{ color: '#cecece' }}
-                onClick={removeFromCart}
-                className="btn">
-                <i className="fas fa-trash-alt"></i>
-              </button>
-            </div>
-          </div>
-        </div>
+    <div className="flex w-full shadow-sm justify-items-center items-center p-2 m-1">
+      <div className="w-16 h-16 rounded-md">
+        <img
+          src={item.product.images[0]}
+          alt={item.product.title}
+          className="w-full h-full object-cover"
+        />
       </div>
-    </Card>
+      <div className="flex-auto text-left ml-2">
+        <h6>{item.product.title}</h6>
+      </div>
+      <h6>
+        {item.product.price.toLocaleString('en-US', {
+          style: 'currency',
+          currency: 'USD',
+        })}
+      </h6>
+      <QuantityButton
+        quantity={item.quantity}
+        handleIncrement={() => handleIncrement(item)}
+        handleDecrement={() => handleDecrement(item)}></QuantityButton>
+
+      <button
+        style={{ color: '#cecece' }}
+        onClick={removeFromCart}
+        className="btn mr-2 ml-2">
+        <i className="fas fa-trash-alt"></i>
+      </button>
+    </div>
   );
 };
 

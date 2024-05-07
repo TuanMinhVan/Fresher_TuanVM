@@ -1,5 +1,3 @@
-import './style.scss';
-
 import { Container } from 'react-bootstrap';
 
 import CartViewItem from '../../components/CartViewItem';
@@ -25,7 +23,7 @@ const CartPage: React.FC = () => {
   }
 
   return (
-    <Container className="py-5 h-100">
+    <Container className="pt-6 mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
       {cartItems.map((item) => (
         <CartViewItem
           key={item.product.id}

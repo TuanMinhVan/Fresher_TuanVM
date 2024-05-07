@@ -1,11 +1,8 @@
-import './style.scss';
-
 import React, { useEffect } from 'react';
 
 import ReactPullToRefresh from 'react-pull-to-refresh';
 import { useDispatch, useSelector } from 'react-redux';
 
-import CategoryList from '../../components/CategoryList';
 import LoadMoreHandler from '../../components/LoadMoreHandler';
 import { AppDispatch, RootState } from '../../redux/store';
 import {
@@ -63,19 +60,22 @@ const ProductList: React.FC = () => {
 
   return (
     <>
-      <CategoryList />
-      <div className="product-list-page container">
-        {loading && products.length === 0 && <p>Loading...</p>}
+      <div className="bg-white">
+        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+          <div>
+            {loading && products.length === 0 && <p>Loading...</p>}
 
-        {error && <p>Error: {error}</p>}
-        <ReactPullToRefresh onRefresh={handleRefresh} loading={loading}>
-          <ProductGrid products={products} />
-        </ReactPullToRefresh>
+            {error && <p>Error: {error}</p>}
+            <ReactPullToRefresh onRefresh={handleRefresh} loading={loading}>
+              <ProductGrid products={products} />
+            </ReactPullToRefresh>
+          </div>
+          <LoadMoreHandler
+            onLoadMore={onLoadMore}
+            hasMore={hasMore}
+            loadingMore={loading}></LoadMoreHandler>
+        </div>
       </div>
-      <LoadMoreHandler
-        onLoadMore={onLoadMore}
-        hasMore={hasMore}
-        loadingMore={loading}></LoadMoreHandler>
     </>
   );
 };

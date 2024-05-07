@@ -24,7 +24,7 @@ const CategoryList: React.FC = () => {
     <div className="category-list container  mt-3  mb-3">
       {categories.map((category) => (
         <a className="category-item" key={category} href={`/${category}`}>
-          <h3>{category}</h3>
+          <h5 style={{ textTransform: 'capitalize' }}>{category}</h5>
         </a>
       ))}
     </div>

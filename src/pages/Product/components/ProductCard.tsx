@@ -38,7 +38,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           })}
         </div>
         <p className="product-description">{description}</p>
-        <AddCartButton product={product} />
+        <div className="row">
+          <AddCartButton product={product} />
+        </div>
       </div>
     </>
   );
